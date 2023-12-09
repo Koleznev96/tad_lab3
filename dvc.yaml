@@ -27,9 +27,9 @@ stages:
       - models/gradient-boosting.joblib
       - src/evaluate.py
     metrics:
-      - scores/gradient_boosting.json:
+      - scores/gradient-boosting.json:
           cache: true
-      - scores/k_neighbors.json:
+      - scores/k-neighbors.json:
           cache: true
-      - scores/random_forest.json:
+      - scores/random-forest.json:
           cache: true
