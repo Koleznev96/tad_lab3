@@ -1,0 +1,5 @@
+data/data.csv
+data/prepared/test.csv
+data/prepared/train.csv
+scores/*
+models/*

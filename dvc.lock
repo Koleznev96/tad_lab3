@@ -1,0 +1,82 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/data.csv
+      hash: md5
+      md5: 94a1fb80ed64b52b86206d8319dc5243
+      size: 5034237
+    - path: src/prepare.py
+      hash: md5
+      md5: 7f8a45a47c2d37124eaceecb0997cb88
+      size: 2686
+    outs:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 534ba294613bf05668be5a69f98eb751
+      size: 36092215
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: 257598411b4040dc68e9ed29c66a474a
+      size: 84188964
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: 257598411b4040dc68e9ed29c66a474a
+      size: 84188964
+    - path: src/train.py
+      hash: md5
+      md5: c5027dad8963dcd6701570c31c35b5f9
+      size: 1189
+    outs:
+    - path: models/gradient-boosting.joblib
+      hash: md5
+      md5: f2ee90f6de26b8482d986e58a1604b54
+      size: 1597790
+    - path: models/k-neighbors.joblib
+      hash: md5
+      md5: 8634b554e025472b9f16a5ab71f6437e
+      size: 105354638
+    - path: models/random-forest.joblib
+      hash: md5
+      md5: d43f0abf49ff9103a9c92ca449d9a9e0
+      size: 119418745
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 534ba294613bf05668be5a69f98eb751
+      size: 36092215
+    - path: models/gradient-boosting.joblib
+      hash: md5
+      md5: f2ee90f6de26b8482d986e58a1604b54
+      size: 1597790
+    - path: models/k-neighbors.joblib
+      hash: md5
+      md5: 8634b554e025472b9f16a5ab71f6437e
+      size: 105354638
+    - path: models/random-forest.joblib
+      hash: md5
+      md5: d43f0abf49ff9103a9c92ca449d9a9e0
+      size: 119418745
+    - path: src/evaluate.py
+      hash: md5
+      md5: 984f760139e3391c6dbb3590678a4e1b
+      size: 1264
+    outs:
+    - path: scores/gradient-boosting.json
+      hash: md5
+      md5: f12a7433987b1e55b795035a14b4a5e7
+      size: 182
+    - path: scores/k-neighbors.json
+      hash: md5
+      md5: ddf4d31b404735881ca2f595b885333c
+      size: 181
+    - path: scores/random-forest.json
+      hash: md5
+      md5: 25fc3d18b175054c570c660811c5c340
+      size: 181

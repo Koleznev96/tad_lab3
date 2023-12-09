@@ -1,0 +1,35 @@
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+      - data/data.csv
+      - src/prepare.py
+    outs:
+      - data/prepared/test.csv
+      - data/prepared/train.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - data/prepared/train.csv
+      - src/train.py
+    outs:
+      - models/gradient-boosting.joblib
+      - models/random-forest.joblib
+      - models/k-neighbors.joblib
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - data/prepared/test.csv
+      - models/random-forest.joblib
+      - models/k-neighbors.joblib
+      - models/gradient-boosting.joblib
+      - src/evaluate.py
+    metrics:
+      - scores/gradient_boosting.json:
+          cache: true
+      - scores/k_neighbors.json:
+          cache: true
+      - scores/random_forest.json:
+          cache: true
