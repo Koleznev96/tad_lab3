@@ -76,6 +76,8 @@ def run_prepare(filename: str, base_path: str) -> None:
         CATEGORY_COLUMNS_ENCODED,
     )
     y = x.pop("default")
+    smote = SMOTE()
+    x, y = smote.fit_resample(x, y)
     x_train, x_test, y_train, y_test = train_test_split(
         x,
         y,
