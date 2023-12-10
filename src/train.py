@@ -32,7 +32,7 @@ def main():
             bootstrap=True,
         ),
         "k-neighbors": KNeighborsClassifier(
-            n_neighbors=10,
+            n_neighbors=30,
             weights="distance",
             algorithm="brute",
         ),
