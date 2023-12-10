@@ -27,7 +27,7 @@ def main():
         ),
         "random-forest": RandomForestClassifier(
             max_depth=10,
-            n_estimators=2000,
+            n_estimators=5000,
             criterion="gini",
             bootstrap=True,
         ),
