@@ -22,7 +22,7 @@ def main():
     models = {
         "gradient-boosting": GradientBoostingClassifier(
             max_depth=4,
-            n_estimators=100,
+            n_estimators=600,
             criterion="squared_error",
         ),
         "random-forest": RandomForestClassifier(
