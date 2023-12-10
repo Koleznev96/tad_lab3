@@ -9,74 +9,74 @@ stages:
       size: 5034237
     - path: src/prepare.py
       hash: md5
-      md5: 7f8a45a47c2d37124eaceecb0997cb88
-      size: 2686
+      md5: 1fcd83d6aa913927fdced23f71ccdc5a
+      size: 2728
     outs:
     - path: data/prepared/test.csv
       hash: md5
-      md5: 534ba294613bf05668be5a69f98eb751
-      size: 36092215
+      md5: 81f5540f23c368c583e56d3ec61fdd8d
+      size: 20545219
     - path: data/prepared/train.csv
       hash: md5
-      md5: 257598411b4040dc68e9ed29c66a474a
-      size: 84188964
+      md5: 970a9d269138b7777b98b742d93634db
+      size: 47936379
   train:
     cmd: python src/train.py
     deps:
     - path: data/prepared/train.csv
       hash: md5
-      md5: 257598411b4040dc68e9ed29c66a474a
-      size: 84188964
+      md5: 970a9d269138b7777b98b742d93634db
+      size: 47936379
     - path: src/train.py
       hash: md5
-      md5: c5027dad8963dcd6701570c31c35b5f9
-      size: 1189
+      md5: 3f96014d1482945c281999f6f8a386fb
+      size: 1235
     outs:
     - path: models/gradient-boosting.joblib
       hash: md5
-      md5: f2ee90f6de26b8482d986e58a1604b54
-      size: 1597790
+      md5: c9ce2cdccf12003354bbe6691a512779
+      size: 1873934
     - path: models/k-neighbors.joblib
       hash: md5
-      md5: 8634b554e025472b9f16a5ab71f6437e
-      size: 105354638
+      md5: 27354d69f15b36470ec12979b728e447
+      size: 60342252
     - path: models/random-forest.joblib
       hash: md5
-      md5: d43f0abf49ff9103a9c92ca449d9a9e0
-      size: 119418745
+      md5: 6125ef88ec1902c159ff23fd85f7bf22
+      size: 114270553
   evaluate:
     cmd: python src/evaluate.py
     deps:
     - path: data/prepared/test.csv
       hash: md5
-      md5: 534ba294613bf05668be5a69f98eb751
-      size: 36092215
+      md5: 81f5540f23c368c583e56d3ec61fdd8d
+      size: 20545219
     - path: models/gradient-boosting.joblib
       hash: md5
-      md5: f2ee90f6de26b8482d986e58a1604b54
-      size: 1597790
+      md5: c9ce2cdccf12003354bbe6691a512779
+      size: 1873934
     - path: models/k-neighbors.joblib
       hash: md5
-      md5: 8634b554e025472b9f16a5ab71f6437e
-      size: 105354638
+      md5: 27354d69f15b36470ec12979b728e447
+      size: 60342252
     - path: models/random-forest.joblib
       hash: md5
-      md5: d43f0abf49ff9103a9c92ca449d9a9e0
-      size: 119418745
+      md5: 6125ef88ec1902c159ff23fd85f7bf22
+      size: 114270553
     - path: src/evaluate.py
       hash: md5
-      md5: 984f760139e3391c6dbb3590678a4e1b
-      size: 1264
+      md5: f89eef20f0c11737ee1119eb1ed31730
+      size: 1307
     outs:
     - path: scores/gradient-boosting.json
       hash: md5
-      md5: f12a7433987b1e55b795035a14b4a5e7
-      size: 182
+      md5: 047e885d0290aea312c0036912be3ab2
+      size: 184
     - path: scores/k-neighbors.json
       hash: md5
-      md5: ddf4d31b404735881ca2f595b885333c
-      size: 181
+      md5: 8edb3a81c731a59c552c98f61199fdd8
+      size: 185
     - path: scores/random-forest.json
       hash: md5
-      md5: 25fc3d18b175054c570c660811c5c340
-      size: 181
+      md5: b7069e68901f507ba80d888892cb5757
+      size: 137
